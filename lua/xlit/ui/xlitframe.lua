@@ -129,7 +129,7 @@ function self:Init ()
 			   keyCode == KEY_ENTER then
 				if textEntry:GetText () ~= "" and
 				   self.TransliterationEntries [textEntry.Id + 1] then
-					timer.Simple (0.001,
+					GLib.CallDelayed (
 						function ()
 							self.TransliterationEntries [textEntry.Id + 1]:RequestFocus ()
 							self.TransliterationEntries [textEntry.Id + 1]:SetCaretPos (GLib.UTF8.Length (self.TransliterationEntries [textEntry.Id + 1]:GetText ()))
