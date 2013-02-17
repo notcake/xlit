@@ -9,8 +9,6 @@ GLib.AddCSLuaPackFile ("autorun/xlit.lua")
 GLib.AddCSLuaPackFolderRecursive ("xlit")
 GLib.AddCSLuaPackSystem ("xlit")
 
-Xlit.PlayerMonitor = Xlit.PlayerMonitor ("Xlit")
-
 include ("export.lua")
 include ("transliterationcontroller.lua")
 
