@@ -103,27 +103,28 @@ function self:Init ()
 		label:SetContentAlignment (4)
 		label:SizeToContents ()
 		
-		local textEntry = vgui.Create ("DTextEntry", self)
+		local textEntry = vgui.Create ("GTextEntry", self)
 		self.TransliterationEntries [#self.TransliterationEntries + 1] = textEntry
 		textEntry.Id = i
-		textEntry:SetAllowNonAsciiCharacters (true)
-		textEntry.OnTextChanged = function (_)
-			if self.Updating then return end
-			
-			local codePoint = self.CharacterMap:GetSelectedCodePoint ()
-			local transliterations = {}
-			for i = 1, #self.TransliterationEntries do
-				local text = self.TransliterationEntries [i]:GetText ()
-				if text ~= "" then
-					transliterations [#transliterations + 1] = text
+		textEntry:AddEventListener ("TextChanged",
+			function (_)
+				if self.Updating then return end
+				
+				local codePoint = self.CharacterMap:GetSelectedCodePoint ()
+				local transliterations = {}
+				for i = 1, #self.TransliterationEntries do
+					local text = self.TransliterationEntries [i]:GetText ()
+					if text ~= "" then
+						transliterations [#transliterations + 1] = text
+					end
 				end
+				if #transliterations == 0 then
+					transliterations = nil
+				end
+				
+				Xlit.TransliterationController:SetTransliterations (GLib.UTF8.Char (codePoint), transliterations)
 			end
-			if #transliterations == 0 then
-				transliterations = nil
-			end
-			
-			Xlit.TransliterationController:SetTransliterations (GLib.UTF8.Char (codePoint), transliterations)
-		end
+		)
 		textEntry.OnKeyCodeTyped = function (_, keyCode)
 			if keyCode == KEY_TAB or
 			   keyCode == KEY_ENTER then

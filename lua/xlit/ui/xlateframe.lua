@@ -15,8 +15,7 @@ function self:Init ()
 		end
 	)
 	
-	self.TextEntry = vgui.Create ("DTextEntry", self)
-	self.TextEntry:SetAllowNonAsciiCharacters (true)
+	self.TextEntry = vgui.Create ("GTextEntry", self)
 	
 	self.Replacements = {}
 	
