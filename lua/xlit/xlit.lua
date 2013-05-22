@@ -5,9 +5,9 @@ include ("glib/glib.lua")
 include ("gooey/gooey.lua")
 
 GLib.Initialize ("Xlit", Xlit)
+GLib.AddCSLuaPackSystem ("Xlit")
 GLib.AddCSLuaPackFile ("autorun/xlit.lua")
 GLib.AddCSLuaPackFolderRecursive ("xlit")
-GLib.AddCSLuaPackSystem ("xlit")
 
 include ("export.lua")
 include ("transliterationcontroller.lua")
