@@ -18,7 +18,7 @@ function self:Init ()
 	self:AddEventListener ("VisibleChanged",
 		function (_, visible)
 			if not visible then return end
-			self.TransliterationEntries [1]:RequestFocus ()
+			self.TransliterationEntries [1]:Focus ()
 		end
 	)
 	
@@ -132,7 +132,7 @@ function self:Init ()
 				   self.TransliterationEntries [textEntry.Id + 1] then
 					GLib.CallDelayed (
 						function ()
-							self.TransliterationEntries [textEntry.Id + 1]:RequestFocus ()
+							self.TransliterationEntries [textEntry.Id + 1]:Focus ()
 							self.TransliterationEntries [textEntry.Id + 1]:SetCaretPos (GLib.UTF8.Length (self.TransliterationEntries [textEntry.Id + 1]:GetText ()))
 							self.TransliterationEntries [textEntry.Id + 1]:SelectAll ()
 						end
@@ -211,7 +211,7 @@ function self:OnSelectedCodePointChanged ()
 	end
 	self.Updating = false
 	
-	self.TransliterationEntries [1]:RequestFocus ()
+	self.TransliterationEntries [1]:Focus ()
 	self.TransliterationEntries [1]:SetCaretPos (GLib.UTF8.Length (self.TransliterationEntries [1]:GetText ()))
 	self.TransliterationEntries [1]:SelectAll ()
 

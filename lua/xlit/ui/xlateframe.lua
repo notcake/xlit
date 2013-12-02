@@ -11,7 +11,7 @@ function self:Init ()
 	self:AddEventListener ("VisibleChanged",
 		function (_, visible)
 			if not visible then return end
-			self.TextEntry:RequestFocus ()
+			self.TextEntry:Focus ()
 		end
 	)
 	
@@ -39,7 +39,7 @@ function self:AddCharacterDisplay (character)
 			
 			self.TextEntry:SetText (left .. character .. right)
 			self.TextEntry:SetCaretPos (self.SelectionStart, self.SelectionEnd)
-			self.TextEntry:RequestFocus ()
+			self.TextEntry:Focus ()
 			
 			self:RegenerateSubstitutes ()
 		end

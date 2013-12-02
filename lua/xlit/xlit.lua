@@ -9,6 +9,7 @@ GLib.AddCSLuaPackSystem ("Xlit")
 GLib.AddCSLuaPackFile ("autorun/xlit.lua")
 GLib.AddCSLuaPackFolderRecursive ("xlit")
 
+include ("characterreplacementmap.lua")
 include ("export.lua")
 include ("transliterationcontroller.lua")
 

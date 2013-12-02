@@ -12,7 +12,7 @@ function self:ctor ()
 		end
 	)
 	
-	Xlit:AddEventListener ("Unloaded", tostring (self),
+	Xlit:AddEventListener ("Unloaded", self:GetHashCode (),
 		function ()
 			self:dtor ()
 		end
@@ -25,7 +25,7 @@ function self:dtor ()
 	self:Save ()
 	
 	timer.Destroy ("Xlit.TransliterationController")
-	Xlit:RemoveEventListener ("Unloaded", tostring (self))
+	Xlit:RemoveEventListener ("Unloaded", self:GetHashCode ())
 end
 
 function self:Load ()
