@@ -4,9 +4,9 @@ concommand.Add ("xlit_export",
 		
 		local transliterationTable = GLib.Unicode.GetTransliterationTable ()
 		local code = GLib.StringBuilder ()
-		code = code .. "-- This file is computer-generated.\n"
-		code = code .. "local t = GLib.Unicode.GetTransliterationTable ()\n"
-		code = code .. "\n"
+		code = code .. "-- This file is computer-generated.\r\n"
+		code = code .. "local t = GLib.Unicode.GetTransliterationTable ()\r\n"
+		code = code .. "\r\n"
 
 		local sortedTransliterationTable = {}
 		for character, entry in pairs (transliterationTable) do
@@ -35,7 +35,7 @@ concommand.Add ("xlit_export",
 				if i > 1 then code = code .. ", " end
 				code = code .. "\"" .. GLib.String.Escape (entry [i]) .. "\""
 			end
-			code = code .. " }\n"
+			code = code .. " }\r\n"
 		end
 		
 		file.Write ("xlit_export.txt", code:ToString ())
