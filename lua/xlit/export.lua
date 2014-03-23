@@ -1,4 +1,4 @@
-concommand.Add ("xlit_export",
+concommand.Add ("xlit_export" .. (CLIENT and "_cl" or ""),
 	function (ply, _, _)
 		if SERVER and ply and ply:IsValid () and not ply:IsAdmin () then return end
 		
