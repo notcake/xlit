@@ -25,13 +25,16 @@ concommand.Add ("xlit_export" .. (CLIENT and "_cl" or ""),
 
 		for i = 1, #sortedTransliterationTable do
 			local entry = sortedTransliterationTable [i].Entry
-			
 			if GLib.Unicode.CharacterHasDecomposition (sortedTransliterationTable [i].Character) then
 				print ("Warning: Character " .. sortedTransliterationTable [i].Character .. " already has a decomposition!")
 			end
 			
 			code = code .. "t [\"" .. GLib.String.Escape (sortedTransliterationTable [i].Character) .. "\"] = { "
 			for i = 1, #entry do
+				if string.find (entry [i], "`") then
+					print ("Warning: Character " .. sortedTransliterationTable [i].Character .. "'s decomposition contains the console key (`)!")
+				end
+				
 				if i > 1 then code = code .. ", " end
 				code = code .. "\"" .. GLib.String.Escape (entry [i]) .. "\""
 			end
