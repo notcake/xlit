@@ -30,7 +30,7 @@ function self:Paint (w, h)
 	draw.SimpleText (self.Character, h > 216 and "XlitArial144" or "XlitArial32", w * 0.5, h * 0.5, GLib.Colors.Black, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	
 	local info = string.format ("U+%06X", self.CodePoint)
-	draw.SimpleText (info, h > 216 and "XlitArial32" or "XlitArial16", w * 0.5, h - (h > 216 and 16 or 0), GLib.Colors.Black, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+	draw.SimpleText (info, h > 216 and "XlitArial32" or "XlitArial16", w * 0.5, h - (h > 216 and 16 or 0), GLib.Colors.Black, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
 end
 
 function self:SetCharacter (...)
